@@ -32,11 +32,11 @@ sessions for the event. Take Eventbrite’s modern event listing page (not the c
  - After clicking the registration button I need to:
  - Select which sessions I want to register for under the event
  - Enter my basic information as an Attendee
-   1. First Name
-   2. Last Name
-   3. Email
-   4. Phone
-   5. Company
+     * First Name
+     * Last Name
+     * Email
+     * Phone
+     * Company
 5. As a user, I can only register to Open events and sessions
   - But can see Sold Out and Closed ones on the event listing page
 6. As a user, I get a success/failure message after registration
