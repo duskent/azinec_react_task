@@ -101,7 +101,7 @@ router.route('/:id')
           // Cast both to string becouse they are different objects but same values
           return ('' + item._id) === sessionId.toString();
         });
-        response.json(session);
+        response.json(session[0]);
       }
     });
   });
