@@ -10,8 +10,10 @@ var express = require('express'),
 var getEventAttributes = function (request) {
   return {
     title: request.body.title,
-    start: request.body.start,
-    end: request.body.end,
+    description: request.body.description,
+    image: request.body.image,
+    startTime: request.body.startTime,
+    endTime: request.body.endTime,
     status: request.body.status,
     registrationLimit: request.body.registrationLimit,
     remainingSeats: request.body.remainingSeats
