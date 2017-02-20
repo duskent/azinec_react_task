@@ -1,22 +1,22 @@
-export default function () {
-    return [
-        {
-            id: 1,
-            title: "Meetup",
-            description: "some description",
-            startTime: new Date('May 14 2017'),
-            endTime: new Date('May 16 2017'),
-            remainingSeats: 5,
-            image: "https://www.w3schools.com/css/img_fjords.jpg"
-        },
-        {
-            id: 2,
-            title: "Another Meetup",
-            description: "some different description",
-            startTime: new Date('May 18 2017'),
-            endTime: new Date('May 19 2017'),
-            remainingSeats: 10,
-            image: "https://3.bp.blogspot.com/-W__wiaHUjwI/Vt3Grd8df0I/AAAAAAAAA78/7xqUNj8ujtY/s1600/image02.png"
-        }
-    ]
+import {
+  FETCH_EVENTS,
+  FETCH_EVENTS_SUCCESS,
+  FETCH_EVENTS_FAILURE
+} from '../actions/events';
+
+const INITIAL_STATE = { eventsList: { events: [], error: null, loading: false }};
+
+export default function (state = INITIAL_STATE, action) {
+  let error;
+  switch (action.type) {
+    case FETCH_EVENTS:
+      return { ...state, eventsList: { events: [], error: null, loading: true } }
+    case FETCH_EVENTS_SUCCESS:
+      return { ...state, eventsList: { events: action.payload, error: null, loading: false }};
+    case FETCH_EVENTS_FAILURE:
+      error = action.payload || { message: action.payload.message };
+      return { ...state, eventsList: { events: [], error: error, loading: false }};
+    default:
+      return state;
+  }
 }

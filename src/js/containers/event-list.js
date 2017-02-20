@@ -1,10 +1,22 @@
 import EventList from '../components/event-list.js';
 import {connect} from 'react-redux';
+import {fetchEvents, fetchEventsSuccess, fetchEventsFailure} from '../actions/events.js'
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
-    events: state.events
+    eventsList: state.events.eventsList
   };
 }
 
-export default connect(mapStateToProps)(EventList);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchEvents: () => {
+      dispatch(fetchEvents()).then((response) => {
+        !response.error ? dispatch(fetchEventsSuccess(response.payload.data)) :
+          dispatch(fetchEventsFailure(response.payload.data));
+      });
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventList);

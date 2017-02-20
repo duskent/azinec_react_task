@@ -7,6 +7,7 @@ var eventSchema = new mongoose.Schema({
   status: String,
   registrationLimit: Number,
   remainingSeats: Number,
+  image: String,
   sessions: [sessionSchema]
 });
 mongoose.model('Event', eventSchema);
