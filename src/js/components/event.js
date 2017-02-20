@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 class Event extends Component {
   render() {
-    let currentEvent = this.props.events[0];
+    let currentEvent = this.props.data;
     return (
       <div className="col-sm-6 col-md-4">
         <div className="thumbnail">
