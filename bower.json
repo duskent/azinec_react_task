@@ -1,0 +1,20 @@
+{
+  "name": "azinec_react_task",
+  "description": "ReactJS frontend & NodeJS backed App Azinec task",
+  "main": "app.js",
+  "authors": [
+    "Julian Ronayi"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/duskent/azinec_react_task",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
