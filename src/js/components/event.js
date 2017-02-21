@@ -6,6 +6,9 @@ class Event extends Component {
     return (
       <div className="col-sm-6 col-md-4">
         <div className="thumbnail">
+          <button type="button" onClick={ () => this.props.deleteEvent(currentEvent) } className="btn btn-danger btn-group-justified" aria-label="Right Align">
+            <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>
           <img src={currentEvent.image} alt={currentEvent.title} />
           <div className="caption">
             <h3>{currentEvent.title}</h3>

@@ -8,7 +8,7 @@ class EventList extends Component {
 
   renderEvents(events) {
     return (events.map(event => {
-      return (<Event key={event._id} data={event}/>);
+      return (<Event key={event._id} data={event} deleteEvent={this.props.deleteEvent}/>);
     }));
   }
 

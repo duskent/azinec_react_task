@@ -56,7 +56,7 @@ router.route('/:id')
           if (err) {
             response.status(500).json(err);
           } else {
-            response.status(204).json();
+            response.status(200).json(eventItem);
           }
         });
       }
