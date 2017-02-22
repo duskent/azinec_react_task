@@ -1,4 +1,4 @@
-import Event from '../components/event';
+import Event from '../../components/events/event';
 import {connect} from 'react-redux';
 
 function mapStateToProps(state) {

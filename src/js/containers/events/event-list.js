@@ -1,4 +1,4 @@
-import EventList from '../components/event-list.js';
+import EventList from '../../components/events/event-list';
 import {connect} from 'react-redux';
 import {
   fetchEvents,
@@ -7,7 +7,7 @@ import {
   deleteEvent,
   deleteEventSuccess,
   deleteEventFailure
-} from '../actions/events.js'
+} from '../../actions/events.js'
 
 const mapStateToProps = (state) => {
   return {
