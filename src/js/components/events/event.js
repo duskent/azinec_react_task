@@ -1,14 +1,22 @@
 import React, {Component} from 'react';
 
 class Event extends Component {
+  renderDeleteButton(currentEvent) {
+    if (this.props.admin.admin) {
+      return (
+        <button type="button" onClick={ () => this.props.deleteEvent(currentEvent) } className="btn btn-danger btn-group-justified" aria-label="Right Align">
+          <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </button>
+      );
+    }
+  }
+
   render() {
     let currentEvent = this.props.data;
     return (
       <div className="col-sm-6 col-md-4">
         <div className="thumbnail">
-          <button type="button" onClick={ () => this.props.deleteEvent(currentEvent) } className="btn btn-danger btn-group-justified" aria-label="Right Align">
-            <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>
-          </button>
+          {this.renderDeleteButton(currentEvent)}
           <img src={currentEvent.image} alt={currentEvent.title} />
           <div className="caption">
             <h3>{currentEvent.title}</h3>

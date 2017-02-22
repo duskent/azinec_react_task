@@ -3,7 +3,9 @@ import {connect} from 'react-redux';
 
 function mapStateToProps(state) {
   return {
-    events: state.events
+    eventsList: state.events.eventsList,
+    admin: state.admin,
+    currentEvent: state.data
   };
 }
 
