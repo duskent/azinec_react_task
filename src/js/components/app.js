@@ -1,10 +1,11 @@
 import React from 'react';
 import EventList from '../containers/events/event-list.js';
+import Header from '../containers/header.js'
 require('../../scss/style.scss');
 
 const App = () => (
   <div className="container">
-    <h1 className="page-header well">React Application</h1>
+    <Header />
     <EventList />
   </div>
 );
