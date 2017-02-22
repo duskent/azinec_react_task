@@ -11,21 +11,74 @@ class Event extends Component {
     }
   }
 
+  displayStatus(status) {
+    switch (status) {
+      case 'Open':
+        return <p><b>Status:</b> <span className="label label-success">Open</span></p>;
+        break;
+      case 'Closed':
+        return <p><b>Status:</b> <span className="label label-danger">Closed</span></p>;
+        break;
+      case 'Draft':
+        return <p><b>Status:</b> <span className="label label-primary">Draft</span></p>;
+        break;
+      default:
+        return <p><b>Status:</b> <span className="label label-default">Sold Out</span></p>;
+    }
+  }
+
+  displayImage(currentEvent) {
+    if (currentEvent.image) {
+      return <img src={currentEvent.image} alt={currentEvent.title} />;
+    } else {
+      return <img src="https://www.allcloud.io/wp-content/uploads/2017/01/default-thumbnail.jpg" />
+    }
+  }
+
+  displayTime(value) {
+    let date = new Date(value);
+    let displayedTime = `${date.getHours()}:${date.getMinutes()}`;
+    let displayedDate = `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`;
+    return `${displayedTime}, ${displayedDate}`;
+  }
+
+  displayShowLink(currentEvent) {
+    if (currentEvent.status === 'Closed'){
+      return (
+        <p>
+          <a href="#" className="btn btn-default btn-group-justified disabled" role="button">Closed</a>
+        </p>
+      );
+    } else if (currentEvent.status === 'Sold out' || currentEvent.remainingSeats === 0) {
+      return (
+        <p>
+          <a href="#" className="btn btn-default btn-group-justified disabled" role="button">Sold Out</a>
+        </p>
+      );
+    } else {
+      return (
+        <p>
+          <a href="#" className="btn btn-primary btn-group-justified" role="button">Register</a>
+        </p>
+      );
+    }
+  }
+
   render() {
     let currentEvent = this.props.data;
     return (
       <div className="col-sm-6 col-md-4">
         <div className="thumbnail">
           {this.renderDeleteButton(currentEvent)}
-          <img src={currentEvent.image} alt={currentEvent.title} />
+          {this.displayImage(currentEvent)}
           <div className="caption">
             <h3>{currentEvent.title}</h3>
-            <p>Starting: {currentEvent.startTime.toString()}</p>
-            <p>Ends: {currentEvent.endTime.toString()}</p>
-            <p>remaining Seats: {currentEvent.remainingSeats}</p>
-            <p>
-              <a href="#" className="btn btn-primary btn-group-justified" role="button">Button</a>
-            </p>
+            <p><b>Starting:</b> {this.displayTime(currentEvent.startTime)}</p>
+            <p><b>Ends:</b> {this.displayTime(currentEvent.endTime)}</p>
+            <p><b>Registration Limit</b>: {currentEvent.registrationLimit}</p>
+            <p><b>Remaining Seats</b>: {currentEvent.remainingSeats}</p>
+            {this.displayStatus(currentEvent.status)}
+            {this.displayShowLink(currentEvent)}
           </div>
         </div>
       </div>
