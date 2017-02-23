@@ -28,11 +28,11 @@ class Event extends Component {
     }
   }
 
-  displayImage(currentEvent) {
+  displayImage(currentEvent, imageClass = '') {
     if (currentEvent.image) {
-      return <img src={currentEvent.image} alt={currentEvent.title} />;
+      return <img className={imageClass} src={currentEvent.image} alt={currentEvent.title} />;
     } else {
-      return <img src="https://www.allcloud.io/wp-content/uploads/2017/01/default-thumbnail.jpg" />
+      return <img className={imageClass} src="https://www.allcloud.io/wp-content/uploads/2017/01/default-thumbnail.jpg" />
     }
   }
 
