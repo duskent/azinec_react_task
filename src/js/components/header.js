@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router';
 
 class Header extends Component {
   renderButton(admin) {
@@ -12,7 +13,7 @@ class Header extends Component {
   renderSignOut() {
     return (
       <button type="button"
-        className="btn btn-default pull-right" onClick={ () => { this.props.signOut() }} aria-label="Right Align">
+        className="btn btn-default navbar-btn" onClick={ () => { this.props.signOut() }} aria-label="Right Align">
         Sign out
       </button>
     );
@@ -21,7 +22,7 @@ class Header extends Component {
   renderSignIn() {
     return(
       <button type="button" onClick={ () => {this.props.signIn()} }
-        className="btn btn-primary pull-right" aria-label="Right Align">
+        className="btn btn-primary navbar-btn" aria-label="Right Align">
         Sign in
       </button>
     );
@@ -29,9 +30,16 @@ class Header extends Component {
 
   render() {
     return (
-        <h1 className="page-header well">React Application
-          {this.renderButton(this.props.admin)}
-        </h1>
+      <nav className="navbar navbar-default">
+        <div className="container">
+          <div className="navbar-header">
+            <Link to='/' className="navbar-brand">
+              AZinec react application
+            </Link>
+            {this.renderButton(this.props.admin)}
+          </div>
+        </div>
+      </nav>
     );
   }
 }

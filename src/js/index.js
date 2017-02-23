@@ -9,6 +9,9 @@ import createLogger from 'redux-logger';
 // REDUCERS
 import allReducers from './reducers/';
 import App from './components/app';
+import EventList from './containers/events/event-list';
+import EventDetail from './containers/events/event-detail';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 const logger = createLogger();
 const store = createStore(
@@ -18,7 +21,13 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router history={browserHistory}>
+      <Route path='/' component={App}>
+        <IndexRoute component={EventList} />
+        <Route path='events' component={EventList} />
+        <Route path='events/:id' component={EventDetail}/>
+      </Route>
+    </Router>
   </Provider>,
   document.getElementById('root')
 );

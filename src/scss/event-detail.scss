@@ -1,0 +1,21 @@
+.event-detail-image {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.event-detail-header {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.event-detail-content {
+  font-size: 1.2em;
+  line-height: 1.8em;
+  text-indent: 2.5em;
+}
+
+@media (max-width: 760px) {
+  .event-detail-header {
+    letter-spacing: normal;
+  }
+}

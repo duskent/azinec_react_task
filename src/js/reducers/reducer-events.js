@@ -4,11 +4,15 @@ import {
   FETCH_EVENTS_FAILURE,
   DELETE_EVENT,
   DELETE_EVENT_SUCCESS,
-  DELETE_EVENT_FAILURE
+  DELETE_EVENT_FAILURE,
+  FETCH_EVENT,
+  FETCH_EVENT_SUCCESS,
+  FETCH_EVENT_FAILURE
 } from '../actions/events';
 
 const INITIAL_STATE = { eventsList: { events: [], error: null, loading: false },
-                        deleteEvent: { event: null, error: null, loading: null }};
+                        deleteEvent: { event: null, error: null, loading: null },
+                        activeEvent: { event: {}, error: null, loading: null }};
 
 export default function (state = INITIAL_STATE, action) {
   let error;
@@ -20,6 +24,13 @@ export default function (state = INITIAL_STATE, action) {
     case FETCH_EVENTS_FAILURE:
       error = action.payload || { message: action.payload.message };
       return { ...state, eventsList: { events: [], error: error, loading: false }};
+    case FETCH_EVENT:
+        return { ...state, activeEvent: { ...state.activeEvent, error: null, loading: true } }
+    case FETCH_EVENT_SUCCESS:
+        return { ...state, activeEvent: { event: action.payload, error: null, loading: false }};
+    case FETCH_EVENT_FAILURE:
+      error = action.payload || { message: action.payload.message };
+      return { ...state, activeEvent: { event: null, error: error, loading: false }};
     case DELETE_EVENT:
       let deleteEventArray = state.eventsList.events.filter(function (event) {
         return event._id !== action.payload._id;

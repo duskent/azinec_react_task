@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router';
 
 class Event extends Component {
   renderDeleteButton(currentEvent) {
@@ -58,7 +59,10 @@ class Event extends Component {
     } else {
       return (
         <p>
-          <a href="#" className="btn btn-primary btn-group-justified" role="button">Register</a>
+          <Link to={`/events/${currentEvent._id}`}
+            className="btn btn-primary btn-group-justified" role="button">
+            Register
+          </Link>
         </p>
       );
     }
@@ -70,7 +74,9 @@ class Event extends Component {
       <div className="col-sm-6 col-md-4">
         <div className="thumbnail">
           {this.renderDeleteButton(currentEvent)}
-          {this.displayImage(currentEvent)}
+          <Link to={`/events/${currentEvent._id}`}>
+            {this.displayImage(currentEvent)}
+          </Link>
           <div className="caption">
             <h3>{currentEvent.title}</h3>
             <p><b>Starting:</b> {this.displayTime(currentEvent.startTime)}</p>

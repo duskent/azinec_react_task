@@ -1,13 +1,17 @@
-import React from 'react';
+import React, {Component} from 'react';
 import EventList from '../containers/events/event-list.js';
 import Header from '../containers/header.js'
 require('../../scss/style.scss');
 
-const App = () => (
-  <div className="container">
-    <Header />
-    <EventList />
-  </div>
-);
+class App extends Component {
+  render() {
+    return (
+      <div className="container">
+        <Header />
+        {this.props.children}
+      </div>
+    );
+  }
+}
 
 export default App;
