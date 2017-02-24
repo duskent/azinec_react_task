@@ -1,13 +1,28 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
+require('../../scss/header.scss');
 
 class Header extends Component {
-  renderButton(admin) {
+  renderAdminButtons(admin) {
     if (admin.admin) {
-      return this.renderSignOut();
+      return (
+        <form className='form-inline admin-buttons'>
+          {this.renderSignOut()}
+          {this.renderNewEventButton()}
+        </form>
+      );
     } else {
       return this.renderSignIn();
     }
+  }
+
+  renderNewEventButton() {
+    return (
+      <Link to='/events/new'
+        className="btn btn-success navbar-btn">
+        New Event
+      </Link>
+    );
   }
 
   renderSignOut() {
@@ -36,8 +51,8 @@ class Header extends Component {
             <Link to='/' className="navbar-brand">
               AZinec react application
             </Link>
-            {this.renderButton(this.props.admin)}
           </div>
+          {this.renderAdminButtons(this.props.admin)}
         </div>
       </nav>
     );

@@ -8,6 +8,10 @@ export const FETCH_EVENTS_FAILURE = 'FETCH_EVENTS_FAILURE';
 export const FETCH_EVENT = 'FETCH_EVENT';
 export const FETCH_EVENT_SUCCESS = 'FETCH_EVENT_SUCCESS';
 export const FETCH_EVENT_FAILURE = 'FETCH_EVENT_FAILURE';
+// New Event
+export const NEW_EVENT = 'NEW_EVENT';
+export const NEW_EVENT_SUCCESS = 'NEW_EVENT_SUCCESS';
+export const NEW_EVENT_FAILURE = 'NEW_EVENT_FAILURE';
 //Delete post
 export const DELETE_EVENT = 'DELETE_EVENT';
 export const DELETE_EVENT_SUCCESS = 'DELETE_EVENT_SUCCESS';
@@ -92,6 +96,32 @@ export function fetchEventSuccess(activeEvent) {
 export function fetchEventFailure(error) {
   return {
     type: FETCH_EVENT_FAILURE,
+    payload: error
+  };
+}
+// Create event
+export function createEvent(props) {
+  // const request = axios({
+  //   method: 'get',
+  //   url: `/api/events/${id}`,
+  //   headers: {}
+  // });
+  return {
+    type: NEW_EVENT,
+    payload: props
+  };
+}
+
+export function createEventSuccess(newEvent) {
+  return {
+    type: NEW_EVENT_SUCCESS,
+    payload: newEvent
+  };
+}
+
+export function createEventFailure(error) {
+  return {
+    type: NEW_EVENT_FAILURE,
     payload: error
   };
 }
