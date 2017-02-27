@@ -2,34 +2,25 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
+// Moddleware
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import promise from 'redux-promise';
 import createLogger from 'redux-logger';
 // REDUCERS
 import allReducers from './reducers/';
-import App from './components/app';
-import EventList from './containers/events/event-list';
-import EventDetail from './containers/events/event-detail';
-import EventForm from './containers/events/event-form';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-
+// Routes
+import routes from './routes/index';
+// Store
 const logger = createLogger();
 const store = createStore(
   allReducers,
   applyMiddleware(thunk, promise, logger)
 );
-
+// DOM render
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={browserHistory}>
-      <Route path='/' component={App}>
-        <IndexRoute component={EventList} />
-        <Route path='events' component={EventList} />
-        <Route path='events/new' component={EventForm} />
-        <Route path='events/:id' component={EventDetail}/>
-      </Route>
-    </Router>
+    {routes}
   </Provider>,
   document.getElementById('root')
 );
