@@ -101,14 +101,16 @@ export function fetchEventFailure(error) {
 }
 // Create event
 export function createEvent(props) {
-  // const request = axios({
-  //   method: 'get',
-  //   url: `/api/events/${id}`,
-  //   headers: {}
-  // });
+  const request = axios({
+    method: 'post',
+    data: props,
+    url: '/api/events',
+    headers: {}
+  });
+
   return {
     type: NEW_EVENT,
-    payload: props
+    payload: request
   };
 }
 

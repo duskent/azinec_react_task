@@ -36,10 +36,9 @@ export default function (state = INITIAL_STATE, action) {
       error = action.payload || { message: action.payload.message };
       return { ...state, activeEvent: { event: null, error: error, loading: false }};
     case NEW_EVENT:
-      return { ...state, newEvent: { event: action.payload, error: null, loading: false }};
-        // return { ...state, newEvent: { ...state.newEvent, error: null, loading: true } }
+      return { ...state, newEvent: { ...state.newEvent, error: null, loading: true } }
     case NEW_EVENT_SUCCESS:
-        return { ...state, newEvent: { event: action.payload, error: null, loading: false }};
+      return { ...state, newEvent: { event: action.payload, error: null, loading: false }};
     case NEW_EVENT_FAILURE:
       error = action.payload || { message: action.payload.message };
       return { ...state, newEvent: { event: null, error: error, loading: false }};
